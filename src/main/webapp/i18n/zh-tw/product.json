@@ -1,0 +1,27 @@
+
+{
+    "storeApp": {
+        "product" : {
+            "home": {
+                "title": "Products",
+                "createLabel": "建立一筆新的 Product",
+                "createOrEditLabel": "建立或編輯 Product"
+            },
+            "created": "新的 Product 建立成功，識別碼為 {{ param }}",
+            "updated": "識別碼為 {{ param }} 的 Product 更新成功",
+            "deleted": "識別碼為 {{ param }} 的 Product 刪除成功",
+            "delete": {
+                "question": "您確定要刪除 Product {{ id }} 嗎?"
+            },
+            "detail": {
+                "title": "Product"
+            },
+            "name": "Name",
+            "description": "Description",
+            "price": "Price",
+            "size": "Size",
+            "image": "Image",
+            "productCategory": "Product Category"
+        }
+    }
+}

@@ -1,0 +1,30 @@
+
+{
+    "storeApp": {
+        "invoice" : {
+            "home": {
+                "title": "Invoices",
+                "createLabel": "建立一筆新的 Invoice",
+                "createOrEditLabel": "建立或編輯 Invoice"
+            },
+            "created": "新的 Invoice 建立成功，識別碼為 {{ param }}",
+            "updated": "識別碼為 {{ param }} 的 Invoice 更新成功",
+            "deleted": "識別碼為 {{ param }} 的 Invoice 刪除成功",
+            "delete": {
+                "question": "您確定要刪除 Invoice {{ id }} 嗎?"
+            },
+            "detail": {
+                "title": "Invoice"
+            },
+            "date": "Date",
+            "details": "Details",
+            "status": "Status",
+            "paymentMethod": "Payment Method",
+            "paymentDate": "Payment Date",
+            "paymentAmount": "Payment Amount",
+            "code": "Code",
+            "shipment": "Shipment",
+            "order": "Order"
+        }
+    }
+}
