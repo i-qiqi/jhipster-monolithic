@@ -4,6 +4,9 @@ export class CustomerComponentsPage {
     createButton = element(by.id('jh-create-entity'));
     deleteButtons = element.all(by.css('jhi-customer div table .btn-danger'));
     title = element.all(by.css('jhi-customer div h2#page-heading span')).first();
+    table = element.all(by.css('jhi-customer div table tr'));
+    // const deletebtn =  element.all(by.css('.modal-footer .btn.btn-danger')).first();
+    // deleteDialogBtn = element.all(by.css('.modal-footer .btn.btn-danger'));
 
     async clickOnCreateButton() {
         await this.createButton.click();
@@ -17,9 +20,25 @@ export class CustomerComponentsPage {
         return this.deleteButtons.count();
     }
 
-    async getTitle() {
+    getTitle() {
         return this.title.getAttribute('jhiTranslate');
     }
+
+    getTable() {
+        return this.table;
+    }
+
+    // getDeleteDialogBtnId(){
+    //     return this.deleteDialogBtn.first().getId();
+    // }
+    //
+    // async clickOnDeleteDialogBtn(){
+    //     return this.deleteDialogBtn.first().click();
+    // }
+
+    // async deleteFirstItem() {
+    //     this.table.first().element(by.css('button.btn-danger')).click();
+    // }
 }
 
 export class CustomerUpdatePage {

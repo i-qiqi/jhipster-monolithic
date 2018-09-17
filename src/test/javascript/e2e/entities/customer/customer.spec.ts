@@ -3,12 +3,14 @@ import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
 
 import { CustomerComponentsPage, CustomerDeleteDialog, CustomerUpdatePage } from './customer.page-object';
 
-describe('Customer e2e test', () => {
+
+
+fdescribe('Customer e2e test', () => {
     let navBarPage: NavBarPage;
     let signInPage: SignInPage;
     let customerUpdatePage: CustomerUpdatePage;
     let customerComponentsPage: CustomerComponentsPage;
-    /*let customerDeleteDialog: CustomerDeleteDialog;*/
+    let customerDeleteDialog: CustomerDeleteDialog;
 
     beforeAll(async () => {
         await browser.get('/');
@@ -31,15 +33,17 @@ describe('Customer e2e test', () => {
         await customerUpdatePage.cancel();
     });
 
-    /* it('should create and save Customers', async () => {
+    //Some tests are commented out during generation if an entity has a required relationship field, as we
+    //would have to create a relationship first and set its for the test to work.
+     it('should create and save Customers', async () => {
         await customerComponentsPage.clickOnCreateButton();
         await customerUpdatePage.setFirstNameInput('firstName');
         expect(await customerUpdatePage.getFirstNameInput()).toMatch('firstName');
         await customerUpdatePage.setLastNameInput('lastName');
         expect(await customerUpdatePage.getLastNameInput()).toMatch('lastName');
         await customerUpdatePage.genderSelectLastOption();
-        await customerUpdatePage.setEmailInput('email');
-        expect(await customerUpdatePage.getEmailInput()).toMatch('email');
+        await customerUpdatePage.setEmailInput('email@qq.com');
+        expect(await customerUpdatePage.getEmailInput()).toMatch('email@qq.com');
         await customerUpdatePage.setPhoneInput('phone');
         expect(await customerUpdatePage.getPhoneInput()).toMatch('phone');
         await customerUpdatePage.setAddressLine1Input('addressLine1');
@@ -53,9 +57,18 @@ describe('Customer e2e test', () => {
         await customerUpdatePage.userSelectLastOption();
         await customerUpdatePage.save();
         expect(await customerUpdatePage.getSaveButton().isPresent()).toBeFalsy();
-    });*/
+        expect(customerComponentsPage.getTable().isPresent()).toBeTruthy();
+    });
+    // it('should delete Customers',  async () => {
+    //     await customerComponentsPage.deleteFirstItem();
+    //     await console.log("select : " +customerDeleteDialog.getDialogTitle());
+    //     await customerDeleteDialog.clickOnConfirmButton();
+    //     await console.log("delete customer!");
+    //     expect(await customerComponentsPage.getTable().isPresent()).toBeTruthy();
+    //
+    // });
 
-    /* it('should delete last Customer', async () => {
+     it('should delete last Customer', async () => {
         const nbButtonsBeforeDelete = await customerComponentsPage.countDeleteButtons();
         await customerComponentsPage.clickOnLastDeleteButton();
 
@@ -65,7 +78,7 @@ describe('Customer e2e test', () => {
         await customerDeleteDialog.clickOnConfirmButton();
 
         expect(await customerComponentsPage.countDeleteButtons()).toBe(nbButtonsBeforeDelete - 1);
-    });*/
+    });
 
     afterAll(async () => {
         await navBarPage.autoSignOut();

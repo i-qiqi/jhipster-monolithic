@@ -17,6 +17,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.web.PageableHandlerMethodArgumentResolver;
 import org.springframework.http.MediaType;
 import org.springframework.http.converter.json.MappingJackson2HttpMessageConverter;
+import org.springframework.security.test.context.support.WithMockUser;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -44,6 +45,8 @@ import com.zero.store.domain.enumeration.PaymentMethod;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = StoreApp.class)
+@WithMockUser(username="admin", authorities={"ROLE_ADMIN"},
+    password = "admin")
 public class InvoiceResourceIntTest {
 
     private static final Instant DEFAULT_DATE = Instant.ofEpochMilli(0L);
@@ -69,7 +72,7 @@ public class InvoiceResourceIntTest {
 
     @Autowired
     private InvoiceRepository invoiceRepository;
-    
+
     @Autowired
     private InvoiceService invoiceService;
 
@@ -298,7 +301,7 @@ public class InvoiceResourceIntTest {
             .andExpect(jsonPath("$.[*].paymentAmount").value(hasItem(DEFAULT_PAYMENT_AMOUNT.intValue())))
             .andExpect(jsonPath("$.[*].code").value(hasItem(DEFAULT_CODE.toString())));
     }
-    
+
     @Test
     @Transactional
     public void getInvoice() throws Exception {
