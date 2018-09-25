@@ -3,9 +3,7 @@ import { NavBarPage, SignInPage } from '../../page-objects/jhi-page-objects';
 
 import { CustomerComponentsPage, CustomerDeleteDialog, CustomerUpdatePage } from './customer.page-object';
 
-
-
-fdescribe('Customer e2e test', () => {
+describe('Customer e2e test', () => {
     let navBarPage: NavBarPage;
     let signInPage: SignInPage;
     let customerUpdatePage: CustomerUpdatePage;
@@ -33,9 +31,9 @@ fdescribe('Customer e2e test', () => {
         await customerUpdatePage.cancel();
     });
 
-    //Some tests are commented out during generation if an entity has a required relationship field, as we
-    //would have to create a relationship first and set its for the test to work.
-     it('should create and save Customers', async () => {
+    // Some tests are commented out during generation if an entity has a required relationship field, as we
+    // would have to create a relationship first and set its for the test to work.
+    it('should create and save Customers', async () => {
         await customerComponentsPage.clickOnCreateButton();
         await customerUpdatePage.setFirstNameInput('firstName');
         expect(await customerUpdatePage.getFirstNameInput()).toMatch('firstName');
